@@ -1,0 +1,36 @@
+.sidebar {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.profile_main {
+    transition: margin-left .5s;
+    transition: margin-right .5s;
+}
+
+
+/* width */
+.scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.scroll::-webkit-scrollbar-track {
+    background: #f1f1f17c;
+}
+
+/* Handle */
+.scroll::-webkit-scrollbar-thumb {
+    background: rgba(136, 136, 136, 0.473);
+}
+
+/* Handle on hover */
+.scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(85, 85, 85, 0.479);
+}
