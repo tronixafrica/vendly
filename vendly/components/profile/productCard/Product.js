@@ -1,5 +1,5 @@
 
-const Product = () => {
+const Product = ({product}) => {
     return ( 
         <div className="relative max-w-[12rem] sm:max-w-[15rem] overflow-hidden rounded-lg shadow-lg font-Poppins sm:mx-2">
             {/* start product options icon */}
@@ -9,14 +9,14 @@ const Product = () => {
             {/* end product options icon */}
 
             {/* start product image */}
-            <img className="rounded-tr-lg rounded-tl-lg object-cover w-full h-48" src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Flower and sky"/>
+            <img className="rounded-tr-lg rounded-tl-lg object-cover w-full h-48" src={product.image} alt="Flower and sky"/>
             {/* end product image */}
 
             {/* start product name and price */}
             <div className="sm:px-6 sm:py-4 px-3 py-3 bg-white">
                 <div className="text-[15px] font-[500] tracking-tight text-secondry flex justify-between">
-                    <span>Hp pavillion</span>
-                    <span>$100</span>
+                    <span>{product.name}</span>
+                    <span>N{product.price}</span>
                 </div>
             </div>
             {/* end product name and price */}

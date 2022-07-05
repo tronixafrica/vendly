@@ -2,12 +2,14 @@ import { useRouter } from "next/router";
 import { useContext } from "react";
 import { PageTitleContext } from "../../../context/PageTitleContext";
 import { TabListContext } from "../../../context/TabLinksContext";
+import { UserContext } from "../../../context/UserContext";
 import { ProductIcon, AccountIcon, InsightIcon, HelpIcon, FeedBackIcon } from "../../iconsComponent/Icons";
 import ProfileStatusInfo from "../profileStatusInfo/ProfileStatusInfo";
 
 const DesktopSideBar = () => {
     const { tabIndex, dispatch } = useContext(TabListContext)
     const { setPageTitle } = useContext(PageTitleContext)
+    const { userProfile } = useContext(UserContext)
     const router = useRouter()
 
     // switching the product, account and insight tabs 
@@ -42,7 +44,9 @@ const DesktopSideBar = () => {
         <section className="fixed left-0 w-[280px] h-full shadow-lg bg-white">
             <div className="flex flex-col h-full justify-between py-6 ">
                 {/* start profile status info - profile image, product and sales metrics */}
-                <ProfileStatusInfo />
+                <ProfileStatusInfo 
+                fullName={userProfile.fullName}
+                profilePic={userProfile.profilePic}/>
                 {/* end profile status info - profile image, product and sales metrics */}
 
                 {/* start sidebar links - product, account and insight */}

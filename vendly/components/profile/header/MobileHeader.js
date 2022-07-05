@@ -6,13 +6,14 @@ import ProfileStatusInfo from "../profileStatusInfo/ProfileStatusInfo";
 import Link from "next/link";
 import { DisplaySearchContext } from "../../../context/DisplaySearchContext";
 import { DisplayMobileHeaderContext } from "../../../context/DisplayMobileHeaderContext";
+import { UserContext } from "../../../context/UserContext";
 
 const MobileHeader = () => {
     const { tabIndex, dispatch } = useContext(TabListContext)
     const { displaySearch } = useContext(DisplaySearchContext)
     const { mobileHeader } = useContext(DisplayMobileHeaderContext)
     const router = useRouter()
-    const [numbers, setNumber ] = useState(0)
+    const { userProfile } = useContext(UserContext)
 
     const switchTabs = (id) => {
         if (id === 0) {
@@ -37,11 +38,7 @@ const MobileHeader = () => {
 
     }
 
-    useEffect(() => {
-        console.log(numbers, 'before updating, this is the refresh')
-        setNumber(1)
-        console.log(numbers, 'after updating, this is the refresh')
-    }, [numbers])
+   
 
     return ( 
         <div 
@@ -71,7 +68,9 @@ const MobileHeader = () => {
 
             {/* start profile info */}
             <div>
-                <ProfileStatusInfo />
+                <ProfileStatusInfo 
+                fullName={userProfile.fullName}
+                profilePic={userProfile.profilePic}/>
             </div>
             {/* end profile info */}
 

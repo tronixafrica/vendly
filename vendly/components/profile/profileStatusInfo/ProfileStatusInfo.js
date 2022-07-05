@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import { ProductIcon, MetricIcon } from '../../iconsComponent/Icons';
-const ProfileStatusInfo = () => {
+const ProfileStatusInfo = ({fullName, profilePic}) => {
     return ( 
         <div className='sm:border-b-[1px] sm:border-[#DEDEDE] pb-6 h-[13em] text-center flex flex-col justify-center items-center space-y-3'>
             {/* <div></div> */}
             {/* start user profile image */}
-            <img className="inline object-cover w-[100px] h-[100px] mr-2 rounded-full" src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Profile image"/>
+            <img className="inline object-cover w-[100px] h-[100px] mr-2 rounded-full" src={profilePic} alt="Profile image"/>
             {/* end user profile image */}
 
             {/* start user profile name */}
-            <h1 className='text-[20px] font-Raleway text-secondry font-[600]'>Tronix Africa</h1>
+            <h1 className='text-[20px] font-Raleway text-secondry font-[600]'>{fullName}</h1>
             {/* end user profile name */}
 
             {/* start product and sales  metrics */}

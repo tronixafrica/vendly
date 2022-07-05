@@ -4,10 +4,12 @@ import Product from '../components/profile/productCard/Product';
 import DisplaySearchContextProvider, { DisplaySearchContext } from '../context/DisplaySearchContext';
 import NotificationBarContextProvider from '../context/NotificationBarContext';
 import TabLinkContextProvider from '../context/TabLinksContext';
+import { UserContext } from '../context/UserContext';
 
 const ProductPage = () => {
     const [gridWidth, setGridWidth] = useState('10rem')
     const {displaySearch, setDisplaySearchInput} = useContext(DisplaySearchContext)
+    const { userProfile } = useContext(UserContext)
     let prod
 
     const displaySearchInput = () => {
@@ -40,8 +42,8 @@ const ProductPage = () => {
                 style={{ gridTemplateColumns: `repeat(auto-fit, minmax(${gridWidth}, 1fr))`}}
                 className='grid sm:gap-y-4 sm:gap-x-1 gap-y-2 gap-x-2'>
                     {
-                        [1,2,3,4,6,7,8,9].map(product => (
-                            <Product  key={product}/>
+                        Object.keys(userProfile.products).map(product => (
+                            <Product  key={product} product={userProfile.products[product]}/>
                         ))
                     }
                 </div>

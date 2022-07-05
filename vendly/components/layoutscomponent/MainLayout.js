@@ -9,6 +9,7 @@ import DisplaySearchContextProvider from "../../context/DisplaySearchContext";
 import TabLinkContextProvider from "../../context/TabLinksContext";
 import DisplayMobileHeaderProvider from "../../context/DisplayMobileHeaderContext";
 import PageTitleContextProvider from "../../context/PageTitleContext";
+import UserContextProvider from "../../context/UserContext";
 
 const MainLayout = ({children}) => {
     const { toggle } = useContext(NotificationBarContext)
@@ -58,19 +59,21 @@ const MainLayout = ({children}) => {
 
 export const getLayout = (page) => {
     return (
-        <PageTitleContextProvider>
-            <DisplayMobileHeaderProvider>
-                <DisplaySearchContextProvider>
-                    <NotificationBarContextProvider>
-                        <TabLinkContextProvider>
-                            <MainLayout>
-                                {page}
-                            </MainLayout>
-                        </TabLinkContextProvider>
-                    </NotificationBarContextProvider>
-                </DisplaySearchContextProvider>
-            </DisplayMobileHeaderProvider>
-        </PageTitleContextProvider>
+        <UserContextProvider>
+            <PageTitleContextProvider>
+                <DisplayMobileHeaderProvider>
+                    <DisplaySearchContextProvider>
+                        <NotificationBarContextProvider>
+                            <TabLinkContextProvider>
+                                <MainLayout>
+                                    {page}
+                                </MainLayout>
+                            </TabLinkContextProvider>
+                        </NotificationBarContextProvider>
+                    </DisplaySearchContextProvider>
+                </DisplayMobileHeaderProvider>
+            </PageTitleContextProvider>
+        </UserContextProvider>
     )
 } 
 export default MainLayout;
